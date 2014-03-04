@@ -13,9 +13,11 @@ else
 	        var ip = process.env.OPENSHIFT_NODEJS_IP;
 }
 
+var url = require('url');
 var http = require('http');
 var server = http.createServer(function(req, res) {
-	  res.writeHead(200);
-	    res.end('working');
+	var page = url.parse(req.url).pathname;
+	res.writeHead(200);
+	    res.end('page');
 });
 server.listen(port, ip, function(){});
