@@ -6,6 +6,6 @@ var dowork = function(){
         out = stdout;
 			}
 	);
-  return out;
+  return 'out';
 };
 exports.dowork = dowork;
