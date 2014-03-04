@@ -4,8 +4,8 @@ var dowork = function(){
 			function (error, stdout, stderr) {
 				exports.mesage = stdout;
 			}
-	});
+	);
 	 
-child();
-
+	child();
+}
 exports.dowork = dowork;
