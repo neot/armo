@@ -1,6 +1,6 @@
 var exec = require('child_process').exec;
 var dowork = function(cb){
-	exec("quota -w",
+	exec("ls ~",
       function(error, stdout, stderr){
         cb('stdout');
 			}
