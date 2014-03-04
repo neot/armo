@@ -15,9 +15,9 @@ else
 
 var url = require('url');
 var http = require('http');
-var home=require('controller/home.js');
-var quota = require('controller/quota.js');
-var request = require('controller/request.js');
+var home=require('./controller/home.js');
+var quota = require('./controller/quota.js');
+var request = require('./controller/request.js');
 
 var server = http.createServer(function(req, res) {
 	var page = url.parse(req.url).pathname;
