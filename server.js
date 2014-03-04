@@ -21,4 +21,4 @@ var server = http.createServer(function(req, res) {
 	    res.end('working');
 	    fs.writeFileSync("~/node.log", "res", "UTF-8");
 });
-server.listen(port, ip, function(){]);
+server.listen(port, ip, function(){});
