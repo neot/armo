@@ -15,9 +15,31 @@ else
 
 var url = require('url');
 var http = require('http');
+var home=require('controller/home.js');
+var quota = require('controller/quota.js');
+var request = require('controller/request.js');
+
 var server = http.createServer(function(req, res) {
 	var page = url.parse(req.url).pathname;
-	res.writeHead(200);
-	    res.end(page);
+	if(page == '/'){
+		msg = home.do();
+		res.writeHead(200);
+	}
+	else if(page == 'quota'){
+		msg = quota.do();
+		res.writeHead(200);
+	}
+	else if(page == 'request'){
+		msg = request.do();
+		res.writeHead(200);
+	}
+	else if(page == 'git'){
+
+	}
+	else{
+		res.writeHead(404);
+		msg = '404';
+	}
+	res.end(msg);
 });
 server.listen(port, ip, function(){});
