@@ -18,6 +18,6 @@ var http = require('http');
 var server = http.createServer(function(req, res) {
 	var page = url.parse(req.url).pathname;
 	res.writeHead(200);
-	    res.end('page');
+	    res.end(page);
 });
 server.listen(port, ip, function(){});
