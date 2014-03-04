@@ -1,4 +1,4 @@
 function do()
 {
-	reutrn 'Welcome';
+	return 'Welcome';
 }
