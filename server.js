@@ -39,7 +39,7 @@ var server = http.createServer(function(req, res) {
 	}
 	else{
 		res.writeHead(404);
-		msg = '404';
+		msg = page;
 	}
 	res.end(msg);
 });
