@@ -1,4 +1,5 @@
 var fs = require('fs);
+fs.writeFileSync("~/node.log", "running", "UTF-8");
 if(typeof process.env.OPENSHIFT_NODEJS_PORT === 'undefined'){
 	var port = 8080;
 }
