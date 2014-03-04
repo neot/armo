@@ -1,11 +1,9 @@
 var exec = require('child_process').exec;
-var dowork = function(){
-  var out="";
+var dowork = function(cb){
 	exec('quota -w',
       function(error, stdout, stderr){
-        out = 'stdout';
+        cb(stdout);
 			}
 	);
-  return out;
 };
 exports.dowork = dowork;
