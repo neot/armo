@@ -1,9 +1,11 @@
-var dowork = function(cb){
-	var exec = require('child_process').exec;
+var exec = require('child_process').exec;
+var dowork = function(){
+  var out='';
 	exec('quota -w',
       function(error, stdout, stderr){
-        cb(stdout);
+        out = stdout;
 			}
 	);
+  return out;
 };
 exports.dowork = dowork;
