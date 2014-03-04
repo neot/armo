@@ -25,21 +25,21 @@ var server = http.createServer(function(req, res) {
 		msg = home.dowork();
 		res.writeHead(200);
 	}
-	else if(page == 'quota'){
+	else if(page == '/quota'){
 		quota.do();
 		msg = quota.msg;
 		res.writeHead(200);
 	}
-	else if(page == 'request'){
+	else if(page == '/request'){
 		//msg = request.do();
 		res.writeHead(200);
 	}
-	else if(page == 'git'){
+	else if(page == '/git'){
 
 	}
 	else{
 		res.writeHead(404);
-		msg = page;
+		msg = '404';
 	}
 	res.end(msg);
 });
