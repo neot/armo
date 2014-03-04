@@ -27,8 +27,8 @@ var server = http.createServer(function(req, res) {
 		res.writeHead(200);
 	}
 	else if(page == '/quota'){
-		//quota.dowork(function(param, out){msg=out;});
-    msg='quota';
+		quota.dowork(function(param, out){msg=out;});
+    //msg='quota';
 		res.writeHead(200);
 	}
 	else if(page == '/request'){
