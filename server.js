@@ -15,15 +15,14 @@ else
 
 var url = require('url');
 var http = require('http');
-var home = require('./controller/home.js');
-var quota = require('./controller/quota.js');
-var request = require('./controller/request.js');
+var home = require('./controller/home');
+var quota = require('./controller/quota');
+var request = require('./controller/request');
 
 var server = http.createServer(function(req, res) {
 	var page = url.parse(req.url).pathname;
 	if(page == '/'){
-		msg = dowork();
-		//msg = page;
+		msg = home.dowork();
 		res.writeHead(200);
 	}
 	else if(page == 'quota'){
