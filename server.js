@@ -22,15 +22,15 @@ var request = require('./controller/request.js');
 var server = http.createServer(function(req, res) {
 	var page = url.parse(req.url).pathname;
 	if(page == '/'){
-		msg = home.do();
+		msg = home.dowork();
 		res.writeHead(200);
 	}
 	else if(page == 'quota'){
-		msg = quota.do();
+		//msg = quota.do();
 		res.writeHead(200);
 	}
 	else if(page == 'request'){
-		msg = request.do();
+		//msg = request.do();
 		res.writeHead(200);
 	}
 	else if(page == 'git'){

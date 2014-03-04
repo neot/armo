@@ -1,4 +1,4 @@
-function do()
+function dowork()
 {
 	return 'Welcome';
 }
