@@ -21,7 +21,7 @@ var request = require('./controller/request');
 
 var server = http.createServer(function(req, res) {
 	var page = url.parse(req.url).pathname;
-  msg='';
+  var msg='';
 	if(page == '/'){
 		msg = home.dowork();
 		res.writeHead(200);
