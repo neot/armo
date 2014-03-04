@@ -3,9 +3,9 @@ var dowork = function(){
   var out='';
 	exec('quota -w',
       function(error, stdout, stderr){
-        out = stdout;
+        out = 'stdout';
 			}
 	);
-  return 'out';
+  return out;
 };
 exports.dowork = dowork;
