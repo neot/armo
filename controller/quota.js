@@ -3,7 +3,7 @@ var exec = require('child_process').exec,
 var util = require('util');
 
 var dowork = function(cb){
-  var icount=0;
+  var count=0;
   var nbexec=4;
   var quotaf='';
   var quotad='';
