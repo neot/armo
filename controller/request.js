@@ -15,8 +15,10 @@ var dowork = function(site, cb){
       });
   });
 
-   req.on('error', function(e) {
-      cb(e.message);
+   req.on('error', function(e){
+     if(e.message == 'getaddrinfo ENOTFOUND'){
+      cb('404');
+     }
   });
   req.end();
 };
