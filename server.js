@@ -25,10 +25,15 @@ var server = http.createServer(function(req, res) {
 	if(page == '/'){
 		msg = home.dowork();
 		res.writeHead(200);
+    res.end(msg);
 	}
 	else if(page == '/quota'){
-		quota.dowork(function(out){msg=out;});
-		res.writeHead(200);
+		quota.dowork(
+      function(out){
+        msg=out;
+        res.writeHead(200);
+        res.end(msg);
+      });
 	}
 	else if(page == '/request'){
 		//msg = request.do();
@@ -40,7 +45,7 @@ var server = http.createServer(function(req, res) {
 	else{
 		res.writeHead(404);
 		msg = '404';
+    res.end(msg);
 	}
-	res.end(msg);
 });
 server.listen(port, ip, function(){});
