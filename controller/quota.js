@@ -13,7 +13,7 @@ var dowork = function(cb){
     return util.format("%s:%s:%s", quota, ps, oo);
   }
 
-  exec('quota -w',
+  exec('quota -w | sed 3p | cut -c2',
       function(error, stdout, stderr){
         quota = stdout;
         count++;
@@ -21,7 +21,7 @@ var dowork = function(cb){
           cb(aggregate());
         }
       });
-  exec('ps -ef | wc -l',
+  exec('ps -eLf | wc -l',
       function(error, stdout, stderr){
         ps = stdout;
         count++;
