@@ -23,7 +23,7 @@ var dowork = function(cb){
       });
   exec('ps -ef | wc-l',
       function(error, stdout, stderr){
-        ps = stdout;
+        ps = 'stdout';
         count++;
         if(count==3){
           cb(aggregate());
@@ -31,7 +31,7 @@ var dowork = function(cb){
       });
   exec("expr 'occ-cgroup-read memory.usage_in_bytes' / 1024",
     function(error, stdout, stderr){
-      occ = stdout;
+      occ = 'stdout';
       count++;
       if(count==3){
         cb(aggregate());
