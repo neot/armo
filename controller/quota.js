@@ -4,32 +4,42 @@ var util = require('util');
 
 var dowork = function(cb){
   var count=0;
-  var quota='';
+  var quotaf='';
+  var quotad='';
   var ps='';
   var oo='';
 
   function aggregate()
   {
-    return util.format("%s:%s:%s", quota, ps, oo);
+    return util.format('{ "ram": %s, "disk": :%s, "files": %s, "thread": %s', oo, quotad, quotaf, ps);
   }
 
   exec("quota -w | sed -n 3p | cut -d ' ' -f 5",
       function(error, stdout, stderr){
-        quota = stdout;
+        quotad = stdout;
         count++;
-        if(count==3){
+        if(count==4){
           cb(aggregate());
         }
       });
+  exec("quota -w | sed -n 3p | cut -d ' ' -f 26",
+      function(error, stdout, stderr){
+        quotaf = stdout;
+        count++;
+        if(count==4){
+          cb(aggregate());
+        }
+      });
+
   exec('ps -eLf | wc -l',
       function(error, stdout, stderr){
         ps = stdout;
         count++;
-        if(count==3){
+        if(count==4){
           cb(aggregate());
         }
       });
-  exec("expr 'oo-cgroup-read memory.usage_in_bytes' / 1024",
+  exec("expr `oo-cgroup-read memory.usage_in_bytes` / 1024",
     function(error, stdout, stderr){
       oo = stdout;
       count++;
