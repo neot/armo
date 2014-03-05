@@ -18,7 +18,7 @@ var http = require('http');
 var home = require('./controller/home');
 var quota = require('./controller/quota');
 var request = require('./controller/request');
-var git = require('./controler/git');
+var git = require('./controller/git');
 
 var server = http.createServer(function(req, res) {
 	var page = url.parse(req.url).pathname;
