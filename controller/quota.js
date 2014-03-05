@@ -10,7 +10,6 @@ var dowork = function(cb){
 
   function aggregate()
   {
-    console.log('agg');
     return util.format("%s:%s:%s", quota, ps, occ);
   }
 
@@ -30,7 +29,7 @@ var dowork = function(cb){
           cb(aggregate());
         }
       });
-  exec("expr 'occ-cgroup-read memory.usage_in_bytes'/1024",
+  exec("expr 'occ-cgroup-read memory.usage_in_bytes' / 1024",
     function(error, stdout, stderr){
       occ = stdout;
       count++;
