@@ -15,9 +15,9 @@ var dowork = function(site, cb){
       });
   });
 
-  //req.on('error', function(e) {
-  //    console.log('problem with request: ' + e.message);
-  //});
+   req.on('error', function(e) {
+      cb(e.message);
+  });
   req.end();
 };
 exports.dowork = dowork;
