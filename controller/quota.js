@@ -3,7 +3,8 @@ var exec = require('child_process').exec,
 var util = require('util');
 
 var dowork = function(cb){
-  var count=0;
+  var icount=0;
+  var nbexec=4;
   var quotaf='';
   var quotad='';
   var ps='';
@@ -11,14 +12,14 @@ var dowork = function(cb){
 
   function aggregate()
   {
-    return util.format('{ "ram": %s, "disk": :%s, "files": %s, "thread": %s', oo, quotad, quotaf, ps);
+    return util.format('{ "ram": %s, "disk": %s, "files": %s, "thread": %s', oo, quotad, quotaf, ps);
   }
 
   exec("quota -w | sed -n 3p | cut -d ' ' -f 5",
       function(error, stdout, stderr){
         quotad = stdout;
         count++;
-        if(count==4){
+        if(count==nbexec){
           cb(aggregate());
         }
       });
@@ -26,7 +27,7 @@ var dowork = function(cb){
       function(error, stdout, stderr){
         quotaf = stdout;
         count++;
-        if(count==4){
+        if(count==nbexec){
           cb(aggregate());
         }
       });
@@ -35,7 +36,7 @@ var dowork = function(cb){
       function(error, stdout, stderr){
         ps = stdout;
         count++;
-        if(count==4){
+        if(count==nbexec){
           cb(aggregate());
         }
       });
@@ -43,7 +44,7 @@ var dowork = function(cb){
     function(error, stdout, stderr){
       oo = stdout;
       count++;
-      if(count==3){
+      if(count==nbexec){
         cb(aggregate());
       }
     });
