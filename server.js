@@ -38,7 +38,7 @@ var server = http.createServer(function(req, res) {
       });
 	}
 	else if(page.match('/request/.*')){
-		request.dowork(page.substr(page.lastIndexOf('/')), function(out){
+		request.dowork(page.substr(page.lastIndexOf('/')+1), function(out){
       res.writeHead(200);
       msg = out;
       res.end(msg);
