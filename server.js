@@ -18,10 +18,10 @@ var http = require('http');
 var home = require('./controller/home');
 var quota = require('./controller/quota');
 var request = require('./controller/request');
+var msg='';
 
 var server = http.createServer(function(req, res) {
 	var page = url.parse(req.url).pathname;
-  var msg='';
 	if(page == '/'){
 		msg = home.dowork();
 		res.writeHead(200);
