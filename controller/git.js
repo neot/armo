@@ -5,7 +5,7 @@ var util = require('util');
 var dowork = function(cb){
   fs.readFile('~/git/'+process.env.OPENSHIFT_APP_NAME+'.git/refs/heads/master', function(err, data){
     if(err){
-      cb('503');
+      cb(err.message);
     }
     else{
       cb(util.format('{ "master": "%s" }"', data.replace('\n', '')));
