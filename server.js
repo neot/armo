@@ -38,10 +38,11 @@ var server = http.createServer(function(req, res) {
       });
 	}
 	else if(page.match('/request/.*')){
-		//request.dowork();
-		res.writeHead(200);
-    msg = page;
-    res.end(msg);
+		request.dowork(page.substr(page.lastindexof('/')), function(out){
+      res.writeHead(200);
+      msg = out;
+      res.end(msg);
+    });
 	}
 	else if(page == '/git'){
     git.dowork(
