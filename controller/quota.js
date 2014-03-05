@@ -17,7 +17,7 @@ var dowork = function(cb){
 
   exec("quota -w | sed -n 3p | cut -d ' ' -f 5",
       function(error, stdout, stderr){
-        quotad = stdout;
+        quotad = stdout.replace('\n', '');
         count++;
         if(count==nbexec){
           cb(aggregate());
@@ -25,7 +25,7 @@ var dowork = function(cb){
       });
   exec("quota -w | sed -n 3p | cut -d ' ' -f 26",
       function(error, stdout, stderr){
-        quotaf = stdout;
+        quotaf = stdout.replace('\n', '');
         count++;
         if(count==nbexec){
           cb(aggregate());
@@ -34,7 +34,7 @@ var dowork = function(cb){
 
   exec('ps -eLf | wc -l',
       function(error, stdout, stderr){
-        ps = stdout;
+        ps = stdout.replace('\n', '');
         count++;
         if(count==nbexec){
           cb(aggregate());
@@ -42,7 +42,7 @@ var dowork = function(cb){
       });
   exec("expr `oo-cgroup-read memory.usage_in_bytes` / 1024",
     function(error, stdout, stderr){
-      oo = stdout;
+      oo = stdout.replace('\n', '');
       count++;
       if(count==nbexec){
         cb(aggregate());
