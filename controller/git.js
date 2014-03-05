@@ -4,7 +4,7 @@ var util = require('util');
 var dowork = function(cb){
   exec("cat ~/git/*.git/refs/heads/master",
       function(error, stdout, stderr){
-          cb(util.format('{ "master": "%s" }"', stdout.replace('\n', ''));
-        });
+          cb(util.format('{ "master": "%s" }"', stdout.replace('\n', '')));
+            });
 };
 exports.dowork = dowork;
