@@ -21,7 +21,7 @@ var dowork = function(cb){
           cb(aggregate());
         }
       });
-  exec('ps -eLf | wc-l',
+  exec('ps -ef | wc-l',
       function(error, stdout, stderr){
         ps = stdout;
         count++;
