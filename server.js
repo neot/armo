@@ -19,6 +19,7 @@ var home = require('./controller/home');
 var quota = require('./controller/quota');
 var request = require('./controller/request');
 var git = require('./controller/git');
+var util = require('util');
 
 var server = http.createServer(function(req, res) {
 	var page = url.parse(req.url).pathname;
@@ -36,7 +37,7 @@ var server = http.createServer(function(req, res) {
         res.end(msg);
       });
 	}
-	else if(page == '/request/*'){
+	else if(page.match('/request/.*')){
 		//request.dowork();
 		res.writeHead(200);
     msg = page;
