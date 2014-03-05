@@ -12,7 +12,7 @@ var dowork = function(cb){
 
   function aggregate()
   {
-    return util.format('{ "ram": %s, "disk": %s, "files": %s, "thread": %s', oo, quotad, quotaf, ps);
+    return util.format('{ "ram": %s, "disk": %s, "files": %s, "thread": %s }', oo, quotad, quotaf, ps);
   }
 
   exec("quota -w | sed -n 3p | cut -d ' ' -f 5",
