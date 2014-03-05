@@ -6,11 +6,11 @@ var dowork = function(cb){
   var count=0;
   var quota='';
   var ps='';
-  var occ='';
+  var oo='';
 
   function aggregate()
   {
-    return util.format("%s:%s:%s", quota, ps, occ);
+    return util.format("%s:%s:%s", quota, ps, oo);
   }
 
   exec('quota -w',
@@ -21,17 +21,17 @@ var dowork = function(cb){
           cb(aggregate());
         }
       });
-  exec('ps -ef | wc-l',
+  exec('ps -ef | wc -l',
       function(error, stdout, stderr){
-        ps = 'stdout';
+        ps = stdout;
         count++;
         if(count==3){
           cb(aggregate());
         }
       });
-  exec("expr 'occ-cgroup-read memory.usage_in_bytes' / 1024",
+  exec("expr 'oo-cgroup-read memory.usage_in_bytes' / 1024",
     function(error, stdout, stderr){
-      occ = 'stdout';
+      oo = stdout;
       count++;
       if(count==3){
         cb(aggregate());
