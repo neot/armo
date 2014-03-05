@@ -13,7 +13,7 @@ var dowork = function(cb){
     return util.format("%s:%s:%s", quota, ps, oo);
   }
 
-  exec('quota -w | sed 3p | cut -c2',
+  exec('quota -w | sed 3p | cut -f2',
       function(error, stdout, stderr){
         quota = stdout;
         count++;
