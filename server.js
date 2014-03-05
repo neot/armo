@@ -36,9 +36,11 @@ var server = http.createServer(function(req, res) {
         res.end(msg);
       });
 	}
-	else if(page == '/request'){
-		//msg = request.do();
+	else if(page == '/request/*'){
+		//request.dowork();
 		res.writeHead(200);
+    msg = page;
+    res.end(msg);
 	}
 	else if(page == '/git'){
     git.dowork(
