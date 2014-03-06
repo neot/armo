@@ -23,7 +23,7 @@ var util = require('util');
 var basicAuth = require('./lib/basic-auth.js');
 
 var server = http.createServer(function(req, res) {
-  basicAuth(req, function(){
+  basicAuth.isauthenticated(req, function(){
     var page = url.parse(req.url).pathname;
     var msg='';
     if(page == '/'){
