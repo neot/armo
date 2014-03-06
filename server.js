@@ -20,7 +20,7 @@ var quota = require('./controller/quota');
 var request = require('./controller/request');
 var git = require('./controller/git');
 var util = require('util');
-var basicAuth = require('./lib/basic-auth.js');
+var basicAuth = require('./lib/basic-auth');
 
 var server = http.createServer(function(req, res) {
   basicAuth.isauthenticated(req, function(){
