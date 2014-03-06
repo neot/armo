@@ -6,7 +6,7 @@ var dowork = function(cb){
       cb(err.message);
     }
     else{
-      cb(util.format('{ "master": "%s" }"', data));
+      cb(util.format('{ "master": "%s" }"', data.replace('\n', '')));
     }
   });
 };
