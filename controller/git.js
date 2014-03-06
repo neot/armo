@@ -6,7 +6,8 @@ var dowork = function(cb){
       cb(err.message);
     }
     else{
-      cb(util.format('{ "master": "%s" }"', data.replace("\n", "")));
+      d=data;
+      cb(util.format('{ "master": "%s" }"', d.replace("\n", "")));
     }
   });
 };
