@@ -7,7 +7,8 @@ var dowork = function(cb){
     }
     else{
       d=data;
-      cb(util.format('{ "master": "%s" }"', d));
+      //cb(util.format('{ "master": "%s" }"', d));
+      cb(data.indexOf('\n');
     }
   });
 };
