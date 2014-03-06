@@ -3,7 +3,7 @@ var exec = require('child_process').exec,
     child;
 var util = require('util');
 var dowork = function(cb){
-  fs.readFile(process.env.HOME+'/git/'+process.env.OPENSHIFT_APP_NAME+'.git/refs/heads/master', function(err, data){
+  fs.readFile(process.env.HOME+'git'+process.env.OPENSHIFT_APP_NAME+'.git/refs/heads/master', function(err, data){
     if(err){
       cb(err.message);
     }
