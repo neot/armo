@@ -8,7 +8,10 @@ var dowork = function(cb){
     else{
       d=data;
       //cb(util.format('{ "master": "%s" }"', d));
-      cb(data.indexOf('\n');
+      if(data.contains('\n'))
+      {
+        data.replace('\n', '');
+      }
     }
   });
 };
