@@ -60,7 +60,7 @@ var server = http.createServer(function(req, res) {
       res.end(msg);
     }
   }, function(code, h1, h2){
-    res.statusCode = 401;
+    res.statusCode =code;
     res.setHeader(h1, h2);
   });
 });
