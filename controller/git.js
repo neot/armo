@@ -1,14 +1,13 @@
 var fs = require('fs');
-var util = require('util');
+
 var dowork = function(cb){
-  fs.readFile(process.env.HOME+'git/'+process.env.OPENSHIFT_APP_NAME+'.git/refs/heads/master', {encoding:'utf-8'}, function(err, data){
+  var file = process.env.HOME+'git/'+process.env.OPENSHIFT_APP_NAME+'.git/refs/heads/master';
+  fs.readFile(file, {encoding:'utf-8'}, function(err, data){
     if(err){
-      cb(err.message);
+      return cb(err);
     }
-    else{
-      d=data;
-      cb(util.format('{ "master": "%s" }"', d.replace('\n', '')));
-    }
+    cb(null, JSON.stringify({master: data.replace('\n', '')}));
   });
 };
+
 exports.dowork = dowork;

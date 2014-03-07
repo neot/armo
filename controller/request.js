@@ -1,6 +1,5 @@
-var net = require('net');
 var http = require('http');
-var util = require('util');
+
 var dowork = function(site, cb){
   var options = {
     hostname: site,
@@ -9,16 +8,22 @@ var dowork = function(site, cb){
     method: 'GET'
   };
   var req = http.request(options, function(resp){
-      resp.setEncoding('utf8');
-      resp.on('data', function(chunk){
-        cb(util.format('%s %s', resp.statusCode, chunk));
-      });
+    resp.setEncoding('utf8');
+    var chunks = [];
+    resp.on('data', function(chunk){
+      chunks.push(chunk);
+    });
+    resp.on('end', function(){
+      cb(null, resp.statusCode, chunks.join(''));
+    });
   });
 
-   req.on('error', function(e){
-     if(e.message == 'getaddrinfo ENOTFOUND'){
-      cb('404');
-     }
+  req.on('error', function(e){
+    if(e.message === 'getaddrinfo ENOTFOUND'){
+      cb(new Error('Not Found'), 404);
+    }else{
+      cb(e);
+    }
   });
   req.end();
 };
