@@ -39,12 +39,15 @@ var dowork = function(callback){
         return cb(error);
       }
       ps = stdout.replace('\n', '');
+    });
   }, function(cb){
-    exec("expr `oo-cgroup-read memory.usage_in_bytes` / 1024", function(error, stdout){
-    if(error){
-      return cb(error);
-    }
-    oo = stdout.replace('\n', '');
+    //exec("expr `oo-cgroup-read memory.usage_in_bytes` / 1024", function(error, stdout){
+    exec("expr 2048 / 1024", function(error, stdout){
+      if(error){
+        return cb(error);
+      }
+       oo = stdout.replace('\n', '');
+    });
   }], function(err, results){
     if(err){
       return callback(err);

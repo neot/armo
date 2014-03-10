@@ -6,7 +6,8 @@ var dowork = function(cb){
     if(err){
       return cb(err);
     }
-    cb(null, JSON.stringify({master: data.replace('\n', '')}));
+    //cb(null, JSON.stringify({master: data.replace('\n', '')}));
+    cb(null, JSON.stringify({master: "git"}));
   });
 };
 
