@@ -1,5 +1,5 @@
 var dowork = function (){
-	return 'Welcome XX';
+	return 'Welcome X';
 }
 
 exports.dowork = dowork;
