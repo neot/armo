@@ -1,5 +1,6 @@
 var url = require('url');
 var http = require('http');
+var express = require'expresss');
 
 var home = require('./controller/home');
 var quota = require('./controller/quota');
@@ -18,13 +19,13 @@ var server = http.createServer(function(req, res) {
       res.setHeader('WWW-Authenticate', 'Basic realm="Secure Area"');
       return res.end();
     }
+    var app = express();
     var page = url.parse(req.url).pathname;
-    var msg='';
-    if(page === '/'){
-      msg = home.dowork();
+    app.get('/', function(req, res){
       res.writeHead(200);
-      res.end(msg);
-    }else if(page === '/quota'){
+      res.end(home.dowork(););
+    });
+    app.get('/quota', function(req, res){
       quota.dowork(function(err, out){
         if(err){
           res.writeHead(500);
@@ -33,8 +34,9 @@ var server = http.createServer(function(req, res) {
         res.writeHead(200);
         res.end(out);
       });
-    }else if(page.match(/\/request\/.*/)){
-      request.dowork(page.substr(page.lastIndexOf('/')+1), function(err , statusCode, body){
+    });
+    app.get('/request/:site', function(req, res){
+      request.dowork(req.params.site, function(err , statusCode, body){
         if(err){
           res.writeHead(500);
           return res.end(err.message);
@@ -42,7 +44,8 @@ var server = http.createServer(function(req, res) {
         res.writeHead(statusCode);
         res.end(body);
       });
-    }else if(page === '/git'){
+    });
+    app.get('/git', function(req, req){
       git.dowork(function(err, out){
         if(err){
           res.writeHead(500);
@@ -51,14 +54,12 @@ var server = http.createServer(function(req, res) {
         res.writeHead(200);
         res.end(out);
       });
-    }else{
+    });
+    app.use(function(req, res, next){
       res.writeHead(404);
       res.end(404);
-    }
+    });
   });
 });
-server.listen(port, ip, function(err){
-  if(err){
-    console.error(err);
-  }
+app.listen(port);
 });
