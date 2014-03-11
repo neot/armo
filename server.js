@@ -17,7 +17,7 @@ var ip = process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
     res.setHeader('WWW-Authenticate', 'Basic realm="Secure Area"');
     return res.end();
   }*/
-  var app = express();
+  /*var app = express();
   app.get('/', function(req, res){
     res.writeHead(200);
     res.end(home.dowork());
@@ -52,9 +52,9 @@ var ip = process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
       res.end(out);
     });
   });*/
-  app.use(function(req, res, next){
+  /*app.use(function(req, res, next){
     res.writeHead(404);
     res.end("404");
   });
-//});
+//});*/
 app.listen(port);
