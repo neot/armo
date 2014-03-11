@@ -1,7 +1,7 @@
 var request = require('request');
 
-var dowork = function("http://"+site, cb){
-  request(site, function (error, response, body) {
+var dowork = function(site, cb){
+  request("http://"+site, function (error, response, body) {
     if(error) {
       return cb(error);
     }
