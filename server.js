@@ -14,10 +14,8 @@ var ip = process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
 
 var checkAuthentification = function(req, res){
   if(basicAuth.isauthenticatedSync(req)){
-    console.log('auth');
     return true;
   }
-  console.log('nauth');
   res.statusCode = 401;
   res.setHeader('WWW-Authenticate', 'Basic realm="Secure Area"');
   res.end();
