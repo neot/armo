@@ -12,10 +12,10 @@ var dowork = function(callback){
 
   function aggregate(results){
     return JSON.stringify({
-      ram: results[0],
-      disk: results[1],
-      files: results[2],
-      thread: results[3]
+      ram: results[3],
+      disk: results[0],
+      files: results[1],
+      thread: results[2]
     });
   }
 
