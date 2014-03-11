@@ -10,12 +10,12 @@ var dowork = function(callback){
   var ps='';
   var oo='';
 
-  function aggregate(){
+  function aggregate(results){
     return JSON.stringify({
-      ram: oo,
-      disk: quotad,
-      files: quotaf,
-      thread: ps
+      ram: results[0],
+      disk: results[1],
+      files: results[2],
+      thread: results[3]
     });
   }
 
@@ -24,38 +24,38 @@ var dowork = function(callback){
       if(error){
         return cb(error);
       }
-      quotad = stdout.replace('\n', '');
-      cb(null, quotad);
+      //quotad = stdout.replace('\n', '');
+      cb(null, stdout.replace('\n', ''));
     });
   }, function(cb){
     exec("quota -w | sed -n 3p | cut -d ' ' -f 24", function(error, stdout){// warning!, result depends on the field number
       if(error){
        return cb(error);
       }
-      quotaf = stdout.replace('\n', '');
-      cb(null, quotaf);
+      //quotaf = stdout.replace('\n', '');
+      cb(null, stdout.replace('\n', ''));
     });
   }, function(cb){
     exec('ps -eLf | wc -l', function(error, stdout){
       if(error){
         return cb(error);
       }
-      ps = stdout.replace('\n', '');
-      cb(null, ps);
+      //ps = stdout.replace('\n', '');
+      cb(null, stdout.replace('\n', ''));
     });
   }, function(cb){
     exec("expr `oo-cgroup-read memory.usage_in_bytes` / 1024", function(error, stdout){
       if(error){
         return cb(error);
       }
-      oo = stdout.replace('\n', '');
-      cb(null, oo);
+      //oo = stdout.replace('\n', '');
+      cb(null, stdout.replace('\n', ''));
     });
   }], function(err, results){
     if(err){
       return callback(err);
     }
-    callback(null, aggregate());
+    callback(null, aggregate(results));
   });
 };
 
