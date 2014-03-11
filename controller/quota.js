@@ -20,22 +20,20 @@ var dowork = function(callback){
   }
 
   async.parallel([function(cb){
-    exec("quota -w | sed -n 3p | cut -d ' ' -f 5", function(error, stdout){
+    exec("quota -w | sed -n 3p | cut -d ' ' -f 4", function(error, stdout){// warning!, result depends on the field number
       if(error){
         return cb(error);
       }
       quotad = stdout.replace('\n', '');
       cb(null, quotad);
-      console.log("got quotad");
     });
   }, function(cb){
-    exec("quota -w | sed -n 3p | cut -d ' ' -f 26", function(error, stdout){
+    exec("quota -w | sed -n 3p | cut -d ' ' -f 24", function(error, stdout){// warning!, result depends on the field number
       if(error){
        return cb(error);
       }
       quotaf = stdout.replace('\n', '');
       cb(null, quotaf);
-      console.log("got quotaf");
     });
   }, function(cb){
     exec('ps -eLf | wc -l', function(error, stdout){
@@ -44,7 +42,6 @@ var dowork = function(callback){
       }
       ps = stdout.replace('\n', '');
       cb(null, ps);
-      console.log("got ps");
     });
   }, function(cb){
     exec("expr `oo-cgroup-read memory.usage_in_bytes` / 1024", function(error, stdout){
@@ -53,7 +50,6 @@ var dowork = function(callback){
       }
       oo = stdout.replace('\n', '');
       cb(null, oo);
-      console.log("got oo");
     });
   }], function(err, results){
     if(err){
