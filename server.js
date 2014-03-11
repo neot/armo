@@ -1,6 +1,7 @@
 var url = require('url');
 var http = require('http');
 var express = require('express');
+//var requestJS = require('require');
 
 var home = require('./controller/home');
 var quota = require('./controller/quota');
@@ -12,16 +13,16 @@ var port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
 var ip = process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
 
 var checkAuthentification = function(req, res){
-  basicAuth.isauthenticated(req, function(err){
-    if(!err){
-      return true;
-    }
-    res.statusCode = 401;
-    res.setHeader('WWW-Authenticate', 'Basic realm="Secure Area"');
-    res.end();
-    return false;
-  });
-}
+  if(basicAuth.isauthenticatedSync(req)){
+    console.log('auth');
+    return true;
+  }
+  console.log('nauth');
+  res.statusCode = 401;
+  res.setHeader('WWW-Authenticate', 'Basic realm="Secure Area"');
+  res.end();
+  return false;
+};
  
 var app = express();
 app.get('/', function(req, res){
