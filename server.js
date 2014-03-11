@@ -25,15 +25,14 @@ var checkAuthentification = function(req, res){
  
 var app = express();
 app.get('/', function(req, res){
-  if(checkAuthentification(req, res)
-  {
+  if(checkAuthentification(req, res)){
     res.writeHead(200);
     res.end(home.dowork());
   }
 });
+
 app.get('/quota', function(req, res){
-  if(checkAuthentification(req, res)
-  {
+  if(checkAuthentification(req, res)){
     quota.dowork(function(err, out){
       if(err){
         res.writeHead(500);
@@ -44,9 +43,9 @@ app.get('/quota', function(req, res){
     });
   }
 });
+
 app.get('/request/:site', function(req, res){
-  if(checkAuthentification(req, res)
-  {
+  if(checkAuthentification(req, res)){
     request.dowork(req.params.site, function(err , statusCode, body){
       if(err){
         res.writeHead(500);
@@ -57,9 +56,9 @@ app.get('/request/:site', function(req, res){
     });
   }
 });
+
 app.get('/git', function(req, res){
-  if(checkAuthentification(req, res)
-  {
+  if(checkAuthentification(req, res)){
     git.dowork(function(err, out){
       if(err){
         res.writeHead(500);
@@ -70,11 +69,12 @@ app.get('/git', function(req, res){
     });
   }
 });
+
 app.use(function(req, res, next){
-  if(checkAuthentification(req, res)
-  {
+  if(checkAuthentification(req, res)){
     res.writeHead(404);
     res.end("404");
   }
 });
+
 app.listen(port, ip);
