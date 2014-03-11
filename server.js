@@ -57,4 +57,4 @@ var ip = process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
     res.end("404");
   });
 //});
-app.listen(port);
+app.listen(port, ip);
