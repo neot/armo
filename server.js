@@ -42,7 +42,7 @@ var ip = process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
       res.end(body);
     });
   });
-  app.get('/git', function(req, req){
+  app.get('/git', function(req, res){
     git.dowork(function(err, out){
       if(err){
         res.writeHead(500);

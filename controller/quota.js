@@ -25,6 +25,8 @@ var dowork = function(callback){
         return cb(error);
       }
       quotad = stdout.replace('\n', '');
+      cb(null, quotad);
+      console.log("got quotad");
     });
   }, function(cb){
     exec("quota -w | sed -n 3p | cut -d ' ' -f 26", function(error, stdout){
@@ -32,6 +34,8 @@ var dowork = function(callback){
        return cb(error);
       }
       quotaf = stdout.replace('\n', '');
+      cb(null, quotaf);
+      console.log("got quotaf");
     });
   }, function(cb){
     exec('ps -eLf | wc -l', function(error, stdout){
@@ -39,20 +43,23 @@ var dowork = function(callback){
         return cb(error);
       }
       ps = stdout.replace('\n', '');
+      cb(null, ps);
+      console.log("got ps");
     });
   }, function(cb){
-    //exec("expr `oo-cgroup-read memory.usage_in_bytes` / 1024", function(error, stdout){
-    exec("expr 2048 / 1024", function(error, stdout){
+    exec("expr `oo-cgroup-read memory.usage_in_bytes` / 1024", function(error, stdout){
       if(error){
         return cb(error);
       }
-       oo = stdout.replace('\n', '');
+      oo = stdout.replace('\n', '');
+      cb(null, oo);
+      console.log("got oo");
     });
   }], function(err, results){
     if(err){
       return callback(err);
     }
-    callback(aggregate());
+    callback(null, aggregate());
   });
 };
 
