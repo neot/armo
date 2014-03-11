@@ -1,7 +1,6 @@
 var url = require('url');
 var http = require('http');
 var express = require('express');
-//var requestJS = require('require');
 
 var home = require('./controller/home');
 var quota = require('./controller/quota');

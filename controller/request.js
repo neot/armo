@@ -1,4 +1,4 @@
-var require = require('require');
+var require = require('request');
 
 var dowork = function(site, cb){
   request(site, function (error, response, body) {
