@@ -17,8 +17,8 @@ var ip = process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
     res.setHeader('WWW-Authenticate', 'Basic realm="Secure Area"');
     return res.end();
   }*/
-  /*var app = express();
-  app.get('/', function(req, res){
+  var app = express();
+  /*app.get('/', function(req, res){
     res.writeHead(200);
     res.end(home.dowork());
   });
