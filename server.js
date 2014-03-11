@@ -18,11 +18,11 @@ var ip = process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
     return res.end();
   }*/
   var app = express();
-  /*app.get('/', function(req, res){
+  app.get('/', function(req, res){
     res.writeHead(200);
     res.end(home.dowork());
   });
-  /*app.get('/quota', function(req, res){
+  app.get('/quota', function(req, res){
     quota.dowork(function(err, out){
       if(err){
         res.writeHead(500);
@@ -51,10 +51,10 @@ var ip = process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
       res.writeHead(200);
       res.end(out);
     });
-  });*/
-  /*app.use(function(req, res, next){
+  });
+  app.use(function(req, res, next){
     res.writeHead(404);
     res.end("404");
   });
-//});*/
+//});
 app.listen(port);
