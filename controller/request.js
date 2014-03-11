@@ -1,6 +1,6 @@
 var request = require('request');
 
-var dowork = function(site, cb){
+var dowork = function("http://"+site, cb){
   request(site, function (error, response, body) {
     if(error) {
       return cb(error);
