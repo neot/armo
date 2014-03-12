@@ -1,6 +1,7 @@
 var url = require('url');
 var http = require('http');
 var express = require('express');
+var fs = require('fs');
 
 var home = require('./api/home');
 var quota = require('./api/quota');
@@ -24,8 +25,14 @@ var checkAuthentification = function(req, res){
 var app = express();
 app.get('/', function(req, res){
   if(checkAuthentification(req, res)){
+    fs.readFile("./public/index.html", function(err, data){
+      if(err){
+        res.writeHead(500);
+        return res.end(500);
+      }
     res.writeHead(200);
-    res.end(home.dowork());
+    res.end(data);
+    });
   }
 });
 
@@ -68,10 +75,32 @@ app.get('/git', function(req, res){
   }
 });
 
+app.get('/:file', function(req, res){
+  if(checkAuthentification(req, res)){
+    console.log("req "+site);
+    fs.readFile("./public/"+file, function(err, data){
+      if(err){
+        res.writeHead(500);
+        return res.end(500);
+      }
+    res.writeHead(200);
+    res.end(data);
+    });
+  }
+});
+
 app.use(function(req, res, next){
   if(checkAuthentification(req, res)){
-    res.writeHead(404);
-    res.end("404");
+    var page = url.parse(req.url).pathname;
+    console.log("req "+page);
+    fs.readFile("./public/"+page, function(err, data){
+      if(err){
+        res.writeHead(500);
+        return res.end(500);
+      }
+    res.writeHead(200);
+    res.end(data);
+    });
   }
 });
 
