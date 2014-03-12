@@ -2,10 +2,10 @@ var url = require('url');
 var http = require('http');
 var express = require('express');
 
-var home = require('./controller/home');
-var quota = require('./controller/quota');
-var request = require('./controller/request');
-var git = require('./controller/git');
+var home = require('./api/home');
+var quota = require('./api/quota');
+var request = require('./api/request');
+var git = require('./api/git');
 var basicAuth = require('./lib/basic-auth');
 
 var port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
