@@ -11,6 +11,8 @@ returns 200 Welcome
 GET /quota
 returns 200 { "ram": 396412, "disk":490144, "files":2048, "thread":75 }
 
+Meaning that 396.412KB of memory are used, disk is 490.144B big and 2048B ares used, 75 threads are currently running.
+
 GET /request/curlmyip.com
 returns 200 160.92.100.11
 or GET /request/blub.org
@@ -18,3 +20,4 @@ returns 404
 
 GET /git 
 200 returns {"master":"f92e5b85b22c537608d08e130d480b7ddbdd6bbb"}
+ie master
