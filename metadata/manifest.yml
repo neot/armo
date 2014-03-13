@@ -4,6 +4,7 @@ Display-Name: ARMO 0.8
 Version: "0.8"
 Source-Url: https://github.com/neot/armo.git
 Website: https://github.com/neot/armo
+Require: nodejs
 Cartridge-Version: 0.8
 Cartridge-Vendor: worldline
 Categories:
