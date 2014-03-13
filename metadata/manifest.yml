@@ -10,5 +10,6 @@ Cartridge-Vendor: worldline
 Categories:
   - monitoring
   - nodejs
+  - embedded
 Provides:
   - ARMO
