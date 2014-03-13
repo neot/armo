@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap 101 Template</title>
+    <title>OpenShift REST Monitoring API</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -23,14 +23,14 @@
         <h2>Quota</h2>
           <div class="blog-post">
             <p>This quota provides statistics informations like disk space and disk usage, number of threads running and the size of ram used.</p>
-            <p>For instance, http://armo-neot.rhcloud.com/quota will returns //quota.</p>
+            <p>For instance, <a href="http://$appUrl/quota">http://$appUrl/quota</a> will returns $quota.</p>
         <h2>Git</h2>
           <p>Git command will give you the revision number of your application.</p>
           <p>It is usefull in case you have note tagged your commit.</p>
-          <p>Calling http://armo-neot.rhcloud.com/git will returns //git.</p>
+          <p>Calling <a href="http://$appUrl/git">http://$appUrl/git</a> will returns $git.</p>
         <h2>Request</h2>
           <p>Want to test the network? Call request by giving it a site name</p>
-          <p>http://armo-neot.rhcloud.com/google.com returns the status code of the remote site and the body of the page</p>
+          <p><a ref="http://$appUrl/request/google.com">http://$appUrl/request/google.com</a> returns the status code of the remote site and the body of the page</p>
       </div>
     </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

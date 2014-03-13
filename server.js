@@ -3,7 +3,7 @@ var http = require('http');
 var express = require('express');
 var fs = require('fs');
 
-var home = require('./api/home');
+var home = require('./controller/home');
 var quota = require('./api/quota');
 var request = require('./api/request');
 var git = require('./api/git');
@@ -25,10 +25,10 @@ var checkAuthentification = function(req, res){
 var app = express();
 app.get('/', function(req, res){
   if(checkAuthentification(req, res)){
-    fs.readFile("./public/index.html", function(err, data){
+    home.getPage(function(err, data){
       if(err){
         res.writeHead(500);
-        return res.end(500);
+        return res.end(err.message);
       }
     res.writeHead(200);
     res.end(data);
@@ -77,7 +77,8 @@ app.get('/git', function(req, res){
 
 app.get('/:file', function(req, res){
   if(checkAuthentification(req, res)){
-    console.log("req "+site);
+    var file = req.params.file;
+    console.log("req "+file);
     fs.readFile("./public/"+file, function(err, data){
       if(err){
         res.writeHead(500);
