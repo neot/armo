@@ -2,7 +2,7 @@ Name: armo
 Cartridge-Short-Name: ARMO
 Display-Name: ARMO 0.8
 Version: "0.8"
-Source-Url: 
+Source-Url: https://github.com/neot/armo.git
 Website: https://github.com/neot/armo
 Cartridge-Version: 0.8
 Cartridge-Vendor: worldline
@@ -11,4 +11,3 @@ Categories:
   - nodejs
 Provides:
   - ARMO
-
