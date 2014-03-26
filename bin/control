@@ -1,6 +1,5 @@
 #!/bin/bash
 PATH=/bin/:/usr/bin:$PATH
-source $OPENSHIFT_CARTRIDGE_SDK_BASH
 function start {
 cd $OPENSHIFT_ARMO_DIR/version/armo/
   nohup node server.js >> $OPENSHIFT_ARMO_LOG_DIR/armoapi.log 2>&1 &
