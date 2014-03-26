@@ -1,0 +1,26 @@
+#!/bin/bash
+PATH=/bin/:/usr/bin:$PATH
+source $OPENSHIFT_CARTRIDGE_SDK_BASH
+function start {
+cd $OPENSHIFT_ARMO_DIR/version/armo/
+  nohup node server.js >> $OPENSHIFT_ARMO_LOG_DIR/armoapi.log 2>&1 &
+  echo "Start"
+  }
+function stop {
+  echo "stopping ARMO..."
+  export NODEPID=`cat $OPENSHIFT_MAILAPI_LOG_DIR/node.pid`
+  kill -9 $NODEPID
+}
+function status {
+  echo "Not currently made"
+}
+function build {
+  echo "Nothing to build"
+}
+case "$1" in
+  start) start ;;
+  stop) stop ;;
+  restart) restart ;;
+  status) status ;;
+tidy) tidy ;;
+esac

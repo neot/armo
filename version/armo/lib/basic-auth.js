@@ -1,4 +1,5 @@
 var isauthenticated = function(req, cb){
+  var pass = proc.env.OPENSHIFT_ARMO_KEY || 'tintin';
   var header=req.headers.authorization;
   if(!header){
     return cb(new Error('not authorized'));
@@ -9,7 +10,7 @@ var isauthenticated = function(req, cb){
   var creds = plain_auth.split(':');
   var username = creds[0];
   var password = creds[1];
-  if(username == 'alfred' && password=='tintin'){
+  if(username == 'alfred' && password==pass){
     return cb();
   }
 
@@ -17,6 +18,7 @@ var isauthenticated = function(req, cb){
 };
 
 var isauthenticatedSync = function(req){
+  var pass = proc.env.OPENSHIFT_ARMO_KEY || 'tintin';
   var header=req.headers.authorization;
   if(!header){
     return false;
@@ -27,7 +29,7 @@ var isauthenticatedSync = function(req){
   var creds = plain_auth.split(':');
   var username = creds[0];
   var password = creds[1];
-  if(username == 'nestor' && password=='tintin'){
+  if(username == 'nestor' && password==pass){
     return true;
   }
 
