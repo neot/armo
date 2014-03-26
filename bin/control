@@ -10,6 +10,10 @@ function stop {
   export NODEPID=`cat $OPENSHIFT_ARMO_LOG_DIR/node.pid`
   kill -9 $NODEPID
 }
+function restart {
+  stop;
+  start;
+}
 function status {
   echo "Not currently made"
 }
