@@ -2,13 +2,6 @@ var exec = require('child_process').exec;
 var async = require('async');
 
 var dowork = function(callback){
-  var isError;
-  var count=0;
-  var nbexec=4;
-  var quotaf='';
-  var quotad='';
-  var ps='';
-  var oo='';
 
   function aggregate(results){
     return JSON.stringify({
@@ -24,15 +17,13 @@ var dowork = function(callback){
       if(error){
         return cb(error);
       }
-      //quotad = stdout.replace('\n', '');
       cb(null, stdout.replace('\n', ''));
     });
   }, function(cb){
     exec("quota -w | sed -n 3p | cut -d ' ' -f 24", function(error, stdout){// warning!, result depends on the field number
       if(error){
-       return cb(error);
+        return cb(error);
       }
-      //quotaf = stdout.replace('\n', '');
       cb(null, stdout.replace('\n', ''));
     });
   }, function(cb){
@@ -40,7 +31,6 @@ var dowork = function(callback){
       if(error){
         return cb(error);
       }
-      //ps = stdout.replace('\n', '');
       cb(null, stdout.replace('\n', ''));
     });
   }, function(cb){
@@ -48,7 +38,6 @@ var dowork = function(callback){
       if(error){
         return cb(error);
       }
-      //oo = stdout.replace('\n', '');
       cb(null, stdout.replace('\n', ''));
     });
   }], function(err, results){

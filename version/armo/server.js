@@ -1,65 +1,57 @@
-var url = require('url');
-var http = require('http');
-var express = require'expresss');
+var express = require('expresss');
 
 var home = require('./controller/home');
-var quota = require('./controller/quota');
-var request = require('./controller/request');
-var git = require('./controller/git');
-var basicAuth = require('./lib/basic-auth');
+var quota = require('./api/quota');
+var request = require('./api/request');
+var git = require('./api/git');
 
 var port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
 var ip = process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
+var app = express();
+
+app.use(express.basicAuth(function(user, pass, callback) {
+  var result = (user === 'nestor' && pass === 'tintin');
+  callback(null, result);
+}));
 
 
-var server = http.createServer(function(req, res) {
-  basicAuth.isauthenticated(req, function(err){
+
+app.get('/', function(req, res){
+  res.writeHead(200);
+  res.end(home.dowork());
+});
+app.get('/quota', function(req, res){
+  quota.dowork(function(err, out){
     if(err){
-      res.statusCode = 401;
-      res.setHeader('WWW-Authenticate', 'Basic realm="Secure Area"');
-      return res.end();
+      res.writeHead(500);
+      return res.end(err.message);
     }
-    var app = express();
-    var page = url.parse(req.url).pathname;
-    app.get('/', function(req, res){
-      res.writeHead(200);
-      res.end(home.dowork(););
-    });
-    app.get('/quota', function(req, res){
-      quota.dowork(function(err, out){
-        if(err){
-          res.writeHead(500);
-          return res.end(err.message);
-        }
-        res.writeHead(200);
-        res.end(out);
-      });
-    });
-    app.get('/request/:site', function(req, res){
-      request.dowork(req.params.site, function(err , statusCode, body){
-        if(err){
-          res.writeHead(500);
-          return res.end(err.message);
-        }
-        res.writeHead(statusCode);
-        res.end(body);
-      });
-    });
-    app.get('/git', function(req, req){
-      git.dowork(function(err, out){
-        if(err){
-          res.writeHead(500);
-          return res.end(err.message);
-        }
-        res.writeHead(200);
-        res.end(out);
-      });
-    });
-    app.use(function(req, res, next){
-      res.writeHead(404);
-      res.end(404);
-    });
+    res.writeHead(200);
+    res.end(out);
   });
 });
-app.listen(port);
+app.get('/request/:site', function(req, res){
+  request.dowork(req.params.site, function(err , statusCode, body){
+    if(err){
+      res.writeHead(500);
+      return res.end(err.message);
+    }
+    res.writeHead(statusCode);
+    res.end(body);
+  });
 });
+app.get('/git', function(req, res){
+  git.dowork(function(err, out){
+    if(err){
+      res.writeHead(500);
+      return res.end(err.message);
+    }
+    res.writeHead(200);
+    res.end(out);
+  });
+});
+app.use(function(req, res){
+  res.writeHead(404);
+  res.end(404);
+});
+app.listen(port, ip);

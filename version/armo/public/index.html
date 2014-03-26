@@ -18,19 +18,20 @@
   </head>
   <body>
     <div class="container">
-    <div class="page-header"><h1>OpenShift REST Monitoring API presentation</h1></div>
+      <div class="page-header"><h1>OpenShift REST Monitoring API presentation</h1></div>
       <div class="page-content">
         <h2>Quota</h2>
-          <div class="blog-post">
-            <p>This quota provides statistics informations like disk space and disk usage, number of threads running and the size of ram used.</p>
-            <p>For instance, <a href="http://$appUrl/quota">http://$appUrl/quota</a> will returns $quota.</p>
-        <h2>Git</h2>
+        <div class="blog-post">
+          <p>This quota provides statistics informations like disk space and disk usage, number of threads running and the size of ram used.</p>
+          <p>For instance, <a href="http://$appUrl/quota">http://$appUrl/quota</a> will returns $quota.</p>
+          <h2>Git</h2>
           <p>Git command will give you the revision number of your application.</p>
           <p>It is usefull in case you have note tagged your commit.</p>
           <p>Calling <a href="http://$appUrl/git">http://$appUrl/git</a> will returns $git.</p>
-        <h2>Request</h2>
+          <h2>Request</h2>
           <p>Want to test the network? Call request by giving it a site name</p>
           <p><a ref="http://$appUrl/request/google.com">http://$appUrl/request/google.com</a> returns the status code of the remote site and the body of the page</p>
+        </div>
       </div>
     </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
