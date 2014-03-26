@@ -1,4 +1,4 @@
-var express = require('expresss');
+var express = require('express');
 
 var home = require('./controller/home');
 var quota = require('./api/quota');
@@ -13,7 +13,7 @@ app.use(express.basicAuth(function(user, pass, callback) {
   var result = (user === 'nestor' && pass === 'tintin');
   callback(null, result);
 }));
-
+app.use('/', express.static('./public'));
 
 
 app.get('/', function(req, res){
