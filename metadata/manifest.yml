@@ -8,7 +8,6 @@ Require: nodejs
 Cartridge-Version: 0.8
 Cartridge-Vendor: worldline
 Categories:
-  - monitoring
   - nodejs
   - embedded
 Provides:
