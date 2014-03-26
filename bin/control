@@ -7,7 +7,7 @@ cd $OPENSHIFT_ARMO_DIR/version/armo/
   }
 function stop {
   echo "stopping ARMO..."
-  export NODEPID=`cat $OPENSHIFT_MAILAPI_LOG_DIR/node.pid`
+  export NODEPID=`cat $OPENSHIFT_ARMO_LOG_DIR/node.pid`
   kill -9 $NODEPID
 }
 function status {
