@@ -12,13 +12,6 @@ Categories:
   - embedded
 Provides:
   - ARMO
-Cart-Data:
-  - Key: OPENSHIFT_ARMO_LOG_DIR
-    Type: environment
-    Description: "Directory to store application log files."
-  - Key: OPENSHIFT_ARMO_KEY
-    Type: cart_data
-    Description: "API key"
 Scaling:
   Min: 1
   Max: -1
