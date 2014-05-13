@@ -1,17 +1,18 @@
 Name: armo
 Cartridge-Short-Name: ARMO
-Display-Name: ARMO 0.8
-Version: "0.8"
-Source-Url: https://github.com/neot/armo.git
-Website: https://github.com/neot/armo
-Require: nodejs
-Cartridge-Version: 0.8
+Cartridge-Version: '0.8'
 Cartridge-Vendor: worldline
+Display-Name: ARMO 0.8
+Description: "application monitoring api"
+Version: '0.8'
+License: "apache"
+License-Url: "http://www.apache.org/licenses/LICENSE-2.0"
+Vendor: woeldliine
 Categories:
-  - nodejs
   - embedded
-Provides:
-  - ARMO
+Website: https://github.com/neot/armo
+Source-Url: https://github.com/neot/armo.git
+Require: nodejs
 Scaling:
   Min: 1
   Max: -1

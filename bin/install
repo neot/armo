@@ -1,5 +1,0 @@
-#!/bin/bash
-#mkdir $OPENSHIFT_ARMO_LOG_DIR
-#key=$(generate_password)
-#echo "$key" > $OPENSHIFT_ARMO_DIR/env/OPENSHIFT_ARMO_KEY
-#client_result "The quota API key is $key access /quota"	
