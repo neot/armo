@@ -12,7 +12,7 @@ Categories:
   - embedded
 Website: https://github.com/neot/armo
 Source-Url: https://github.com/neot/armo.git
-Require: nodejs
+Require: nodejs-0.10
 Scaling:
   Min: 1
   Max: -1
