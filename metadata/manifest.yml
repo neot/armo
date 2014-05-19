@@ -7,12 +7,16 @@ Description: "application monitoring api"
 Version: '0.8'
 License: "apache"
 License-Url: "http://www.apache.org/licenses/LICENSE-2.0"
-Vendor: woeldliine
+Vendor: worldliine
 Categories:
   - embedded
 Website: https://github.com/neot/armo
 Source-Url: https://github.com/neot/armo.git
-Require: nodejs-0.10
+Requires: nodejs-0.10
+Cart-Data:
+- Key: password
+  Type: cart_data
+  Description: Password for admin user on API
 Scaling:
   Min: 1
   Max: -1
@@ -24,5 +28,5 @@ Endpoints:
   Protocols:
   - http
   Mappings:
-  - Frontend: "/quota"
-    Backend: "/"
+  - Frontend: /quota
+    Backend: ''

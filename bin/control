@@ -1,13 +1,14 @@
 #!/bin/bash
 PATH=/bin/:/usr/bin:$PATH
 function start {
-cd $OPENSHIFT_ARMO_DIR/version/armo/
-  nohup node server.js >> /dev/null 2>&1 &
+cd $OPENSHIFT_ARMO_DIR/version/0.8/armo/
+  nohup node server.js >> $OPENSHIFT_ARMO_LOG_FILE 2>&1 &
+  echo $! > $OPENSHIFT_ARMO_PID_FILE
   echo "Start"
   }
 function stop {
   echo "stopping ARMO..."
-  export NODEPID=`cat $OPENSHIFT_ARMO_LOG_DIR/node.pid`
+  export NODEPID=`cat $OPENSHIFT_ARMO_PID_FILE`
   kill -9 $NODEPID
 }
 function restart {
