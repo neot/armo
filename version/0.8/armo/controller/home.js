@@ -27,7 +27,7 @@ var getPage = function (cb){
         if(error) {
           callb(error);
         }
-        callb(body);
+        callb(null, body);
       });
     }], function(err, results){
       if(err){
@@ -45,8 +45,6 @@ var getPage = function (cb){
       while(str.indexOf("$git")!=-1){
         str = str.replace("$git", results[1]);
       }
-      str="jipofgjklmlkfdùfezùmadz$^vùmffez";
-      console.log(results[1]);
       cb(null, str);
     });
   });
