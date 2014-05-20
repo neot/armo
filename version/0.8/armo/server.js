@@ -24,7 +24,7 @@ app.get('/', function(req, res){
       res.writeHead(500);
       return res.end(err);
     }
-    res.writeHead(200);
+    res.setHeader('status-code', '200');
     res.setHeader('content-type', 'text/html');
     res.end(content);
   });
