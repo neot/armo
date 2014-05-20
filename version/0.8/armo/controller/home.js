@@ -9,23 +9,29 @@ var getPage = function (cb){
     }
     var appUrl= process.env.OPENSHIFT_APP_DNS || "127.0.0.1:8080";
     async.parallel([function(callb){
-      request("http://"+appUrl+"/"+"quota", function (error, response, body) {//quota
+      /*request("http://"+appUrl+"/"+"quota", function (error, response, body) {//quota
+        if(error) {
+          return callb(error);
+        }
+        callb(null, body);
+      });*/
+      quota.dowork(function(err, out){
+        if(err){
+          return callb(error);
+        }
+        callb(null, out);
+      });
+    }, function(callb){
+      request("http://"+appUrl+"/"+"git", function (error, response, body) {//git
         if(error) {
           return callb(error);
         }
         callb(null, body);
       });
     }, function(callb){
-      request("http://"+appUrl+"/"+"git", function (error, response, body) {//git
-        if(error) {
-          callb(error);
-        }
-        callb(null, body);
-      });
-    }, function(callb){
       request("http://"+appUrl+"/"+"request", function (error, response, body) {//request
         if(error) {
-          callb(error);
+          return callb(error);
         }
         callb(null, body);
       });
