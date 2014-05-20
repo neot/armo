@@ -25,6 +25,7 @@ app.get('/', function(req, res){
       return res.end(err);
     }
     res.writeHead(200);
+    res.setHeader('content-type', 'text/html');
     res.end(content);
   });
 });
@@ -60,7 +61,7 @@ app.get('/git', function(req, res){
 });
 app.use(function(req, res){
   res.writeHead(404);
-  res.end(404);
+  res.end("404");
 });
 
 app.use('/', express.static('./public'));

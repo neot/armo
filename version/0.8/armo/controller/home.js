@@ -33,7 +33,7 @@ var getPage = function (cb){
       if(err){
         return cb(err);
       }
-      var str=data;
+      var str= new String(data);
       var i=0;
       while(str.indexOf('$appUrl')!=-1){
         str = str.replace('$appUrl', appUrl);
