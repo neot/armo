@@ -3,10 +3,10 @@ Cartridge-Short-Name: ARMO
 Cartridge-Version: '0.8'
 Cartridge-Vendor: worldline
 Display-Name: ARMO 0.8
-Description: "application monitoring api"
+Description: application monitoring api
 Version: '0.8'
-License: "apache"
-License-Url: "http://www.apache.org/licenses/LICENSE-2.0"
+License: apache
+License-Url: http://www.apache.org/licenses/LICENSE-2.0
 Vendor: worldliine
 Categories:
   - embedded
