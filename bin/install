@@ -1,0 +1,16 @@
+#!/bin/bash -e
+source $OPENSHIFT_CARTRIDGE_SDK_BASH
+password=$(generate_password)
+user="admin"
+echo "$user" > $OPENSHIFT_ARMO_DIR/env/OPENSHIFT_ARMO_USER
+echo "$password" > $OPENSHIFT_ARMO_DIR/env/OPENSHIFT_ARMO_PASSWORD
+echo $OPENSHIFT_ARMO_DIR/log/armo.log > $OPENSHIFT_ARMO_DIR/env/OPENSHIFT_ARMO_LOG_FILE
+echo $OPENSHIFT_ARMO_DIR/run/armo.pid > $OPENSHIFT_ARMO_DIR/env/OPENSHIFT_ARMO_PID_FILE
+
+
+client_result ""
+client_result "ARMO cartridge added"
+client_result ""
+client_result "User:		$user"
+client_result "Password:	$password"
+client_result ""
