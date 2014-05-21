@@ -1,0 +1,14 @@
+ARMO is provided as a OPENSHIFT Nodejs cartridge.
+
+To instantiate the cartridge, follow the instructions:
+If you already have an existing Nodejs application, go to step 2. Otherwise, start at step 1.
+
+1. First create a Nodejs application on openshift. Give it the name and settings you want.
+
+2. Once your application is running, we will add the cartridge.
+   On the application back-office, follow the link "Or, see the entire list of cartridges you can add". 
+   On the new page, paste the url "https://github.com/neot/armo/raw/master/metadata/manifest.yml" in the text field at the bottom. 
+   Then click next and "Add Cartridge".
+
+3. If all went well, you will be back to your application page with the list of cartridges installed.
+   Note the informations displayed by the cartridge: the username and password to access the API. If forgotten, you can find it in the environnement variables OPENHIFT_ARMO_USER and OPENSHIFT_ARMO_PASSWORD.
