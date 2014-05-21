@@ -1,7 +1,6 @@
 var express = require('express');
 
 var home = require('./controller/home');
-var public = require('./controller/public');
 var quota = require('./api/quota');
 var request = require('./api/request');
 var git = require('./api/git');
@@ -22,7 +21,7 @@ app.get('/', function(req, res){
     if(err){
       console.log(err);
       res.writeHead(500);
-      return res.end(err);
+      return res.end(err.message);
     }
     res.setHeader('status-code', '200');
     res.setHeader('content-type', 'text/html');
@@ -65,20 +64,5 @@ app.use(function(req, res){
 });
 
 app.use('/', express.static('./public'));
-
-/*app.get('/:file', function(req,res){
-  public.getFile(req.params.site, function(err, content){
-    if(err){
-      if(err=="file not found"){
-        res.writeHead(400);
-        return res.end("<h1>404</h1>File Not Found");
-      }
-      res.writeHead(500);
-      return res.end("<h1>500</h1>Unknown Error");
-    }
-    res.writeHead(200);
-    return res.rend(content);
-  });
-});*/
 
 app.listen(port, ip);

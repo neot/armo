@@ -1,5 +1,7 @@
 var fs = require('fs');
-var request = require('request');
+var request = require('../api/request');
+var quota = require('../api/quota');
+var git = require('../api/git');
 var async = require('async');
 
 var getPage = function (cb){
@@ -9,31 +11,18 @@ var getPage = function (cb){
     }
     var appUrl= process.env.OPENSHIFT_APP_DNS || "127.0.0.1:8080";
     async.parallel([function(callb){
-      /*request("http://"+appUrl+"/"+"quota", function (error, response, body) {//quota
-        if(error) {
-          return callb(error);
-        }
-        callb(null, body);
-      });*/
       quota.dowork(function(err, out){
         if(err){
-          return callb(error);
+          return callb(null, "cat not get quota: "+err);
         }
         callb(null, out);
       });
     }, function(callb){
-      request("http://"+appUrl+"/"+"git", function (error, response, body) {//git
-        if(error) {
-          return callb(error);
+      git.dowork(function(err, out){
+        if(err){
+          return callb(null, "can not get git revision: "+err);
         }
-        callb(null, body);
-      });
-    }, function(callb){
-      request("http://"+appUrl+"/"+"request", function (error, response, body) {//request
-        if(error) {
-          return callb(error);
-        }
-        callb(null, body);
+        callb(null, out);
       });
     }], function(err, results){
       if(err){
