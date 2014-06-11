@@ -58,11 +58,13 @@ app.get('/git', function(req, res){
     res.end(out);
   });
 });
+
+app.use(express.static('./public'));
+
 app.use(function(req, res){
   res.writeHead(404);
   res.end("404");
 });
 
-app.use('/', express.static('./public'));
 
 app.listen(port, ip);

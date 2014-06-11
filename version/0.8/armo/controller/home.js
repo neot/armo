@@ -5,7 +5,7 @@ var git = require('../api/git');
 var async = require('async');
 
 var getPage = function (cb){
-  fs.readFile("./public/index.html", {encoding:'utf-8'}, function(err, data){
+  fs.readFile("./include/index.html", {encoding:'utf-8'}, function(err, data){
     if(err){
       return cb(err);
     }
