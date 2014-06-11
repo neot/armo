@@ -52,7 +52,7 @@ app.get('/git', function(req, res){
   git.dowork(function(err, out){
     if(err){
       res.writeHead(500);
-      return res.end(err.message);
+      return res.end(err);
     }
     res.writeHead(200);
     res.end(out);
