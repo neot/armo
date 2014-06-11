@@ -7,7 +7,7 @@ var dowork = function(cb){
     if(err){
       return cb("Cannot access revision number, maybe your git repository is empty");
     }
-    cb(null, JSON.stringify({master: data.replace('\n', '')}));
+    cb(null, JSON.stringify({master: data.toString().replace('\n', '')}));
   });
 };
 
