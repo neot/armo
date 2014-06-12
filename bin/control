@@ -1,7 +1,7 @@
 #!/bin/bash
 PATH=/bin/:/usr/bin:$PATH
 function start {
-cd $OPENSHIFT_ARMO_DIR/version/0.8/armo/
+cd $OPENSHIFT_ARMO_DIR/version/1/armo/
   nohup node server.js >> $OPENSHIFT_ARMO_LOG_FILE 2>&1 &
   echo $! > $OPENSHIFT_ARMO_PID_FILE
   echo "Start"
