@@ -13,18 +13,34 @@ var dowork = function(callback){
   }
 
   async.parallel([function(cb){
-    exec("quota -w | sed -n 3p | cut -d ' ' -f 4", function(error, stdout){// warning!, result depends on the field number
+    exec("quota -w | sed -n 3p", function(error, stdout){// warning!, result depends on the field number
       if(error){
         return cb(error);
       }
-      cb(null, stdout.replace('\n', ''));
+      var regex1 = /^[^ ]*[ ]*/;
+      var regex2 =  /^[^ ]*[ ]*[0-9]*/;
+      var match1 = regex1.exec(stdout);
+      var match2 = regex2.exec(stdout);
+      
+      var start = match1.index+match1[0].length;
+      var end = match2.index+match2[0].length;
+      console.log(end);
+      cb(null, stdout.substr(start, end-start));
     });
   }, function(cb){
-    exec("quota -w | sed -n 3p | cut -d ' ' -f 24", function(error, stdout){// warning!, result depends on the field number
+    exec("quota -w | sed -n 3p", function(error, stdout){// warning!, result depends on the field number
       if(error){
         return cb(error);
       }
-      cb(null, stdout.replace('\n', ''));
+      var regex1 =  /^[^ ]*[ ]*[0-9]*[ ]*[0-9]*[ ]*[0-9]*[ ]*/;
+      var regex2 =  /^[^ ]*[ ]*[0-9]*[ ]*[0-9]*[ ]*[0-9]*[ ]*[0-9]*/;
+      var match1 = regex1.exec(stdout);
+      var match2 = regex2.exec(stdout);
+      
+      var start = match1.index+match1[0].length;
+      var end = match2.index+match2[0].length;
+      console.log(end);
+      cb(null, stdout.substr(start, end-start));
     });
   }, function(cb){
     exec('ps -eLf | wc -l', function(error, stdout){
