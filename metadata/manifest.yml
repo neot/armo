@@ -1,14 +1,13 @@
 Name: armo
 Cartridge-Short-Name: ARMO
-justtoseewhatitdoes: bla
 Cartridge-Version: '1'
 Cartridge-Vendor: worldline
 Display-Name: ARMO
-Description: application monitoring api
+Description: application monitoring api provided by A577781, contact thierry.forli@worldline.com for support
 Version: '1'
 License: apache
 License-Url: http://www.apache.org/licenses/LICENSE-2.0
-Vendor: worldliine
+Vendor: worldline
 Categories:
   - embedded
 Website: https://github.com/neot/armo
